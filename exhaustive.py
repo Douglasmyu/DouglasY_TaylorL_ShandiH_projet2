@@ -1,19 +1,21 @@
 #stock maximization
-def exhaustive(size, values, amount):
+def exhaustive(N, stocks_and_values, amount):
     print("Using exhaustive method")
-    best = None
-    for candidates in range(size):
-        for candidates in values():
-            print()
+    #initialize the max set which is already set in our input
+    max_amount = 0
+    #loop through all sets
+    for i in range(1 << N):
+        #initialize the number of sets that can be packed to our max
+        current_stock = 0
+        current_value = 0
+        #loop through the stock&values
+        for j in range(N):
+            if (i >> j) & 1:
+                #check each comboination
+                current_stock += stocks_and_values[j][0]
+                current_value += stocks_and_values[j][1]
+        if current_value <= amount:
+            max_amount = max(max_amount, current_stock)
+    return max_amount
 
-
-
-
-
-# def stock_maximization (M, items):
-#     best = None
-#     for candidates in <stocks_combinations>(items):
-#         if verify_combinations(M, items, candidates):
-#             if best is None or total_value(candidates) > total_value(best)
-#                 best = candidates
-#     return best
+#read input file
