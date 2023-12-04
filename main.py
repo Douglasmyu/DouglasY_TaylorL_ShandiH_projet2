@@ -1,4 +1,5 @@
 f = open("input.txt",'r')
+o = open("output.txt", 'w')
 import dynamic
 import exhaustive
 
@@ -21,6 +22,9 @@ for i in range(0,10):
     i+=2
   max_amount_dynamic = dynamic.dynamic(n, list, amount)
   max_amount_exhaustive = exhaustive.exhaustive(n, list, amount)
+  o.write(str(max_amount_dynamic) + ' ')
+  o.write(str(max_amount_exhaustive)+ "\n")
   
-  
+
 f.close()
+o.close()
