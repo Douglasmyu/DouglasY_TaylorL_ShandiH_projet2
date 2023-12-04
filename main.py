@@ -1,19 +1,26 @@
+f = open("input.txt",'r')
 import dynamic
 import exhaustive
 
-def main():
-    with open("input.txt", 'r') as f: #open file
-        N= int(f.readline().strip()) 
-        stocks_and_values = [list]
-        amount = int(f.readline().strip())
-        result_D = dynamic(N, stocks_and_values, amount)
-        result_E = exhaustive(N, stocks_and_values, amount)
-      
-        for line in f:
-            f_contents=f.readline(10)
-
-            print(line, end='')
-
-        file = open("output.txt", 'w')
-        f.write 
-    f.closed
+for i in range(0,10):
+  s_and_v = []
+  n = int(f.readline())
+  list = f.readline()
+  amount = int(f.readline())
+  f.readline()
+  for element in range(0,len(list)):
+    if(list[element].isdigit()):
+      s_and_v.append(int(list[element]))
+  list = []
+  i = 0
+  while i < len(s_and_v):
+    sub_list = []
+    sub_list.append(s_and_v[i])
+    sub_list.append(s_and_v[i+1])
+    list.append(sub_list)
+    i+=2
+  max_amount_dynamic = dynamic.dynamic(n, list, amount)
+  max_amount_exhaustive = exhaustive.exhaustive(n, list, amount)
+  
+  
+f.close()
